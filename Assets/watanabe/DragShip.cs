@@ -33,16 +33,11 @@ public class DragShip : MonoBehaviour
     {
         isDragging = false;
 
-        // 「貼った」タイミングでJudgeに通知する
-        Judge judge = FindObjectOfType<Judge>(); // シーン内のJudgeを探す（必要に応じて変更）
-
-        if (judge != null)
+        // シーン内のすべてのJudgeを取得して、それぞれに通知
+        Judge[] judges = FindObjectsOfType<Judge>();
+        foreach (var judge in judges)
         {
             judge.OnShipPlaced(gameObject);
-        }
-        else
-        {
-            Debug.LogWarning("Judgeコンポーネントが見つかりません");
         }
     }
 }
