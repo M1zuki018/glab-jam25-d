@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PartsPick : MonoBehaviour
 {
@@ -15,7 +16,11 @@ public class PartsPick : MonoBehaviour
     [Header("右足"), SerializeField] private GameObject[] _rightlegdamages;
     [Header("左足"), SerializeField] private GameObject[] _leftlegdamages;
     [Header("傷の透明度"), SerializeField, Range(0f, 1f)] private float _resetaipha;
+    [Header("治療法表示ボタン"), SerializeField] private Button _button;
+    [Header("ガーゼ"),SerializeField] private Image _gauze;
+    [Header("絆創膏"), SerializeField] private Image _bandage;
     public bool _expansion;
+    private bool _display;
     Camera _camera;
 
     /// <summary>
@@ -24,8 +29,13 @@ public class PartsPick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _button.onClick.AddListener(SelectTreatment);
+        _button.gameObject.SetActive(false);
+        _bandage.gameObject.SetActive(false);
+        _gauze.gameObject.SetActive(false);
         _camera = Camera.main;
         _expansion = false;
+        _display = false;
         ResetAlpha();
     }
 
@@ -38,14 +48,15 @@ public class PartsPick : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
             if(hit.collider != null)
             {
+                BodyPart _part = hit.collider.GetComponent<BodyPart>();
                 GameObject target = null;
-                switch (hit.collider.tag)//部位の判定
+                switch (_part._bodyPart)//部位の判定
                 {
-                    case "Head": target = _head; SetAlpha(_headdamages,1f); break;
-                    case "RightHand": target = _righthand; SetAlpha(_righthanddamages,1f); break;
-                    case "LeftHand": target = _lefthand; SetAlpha(_lefthanddamages,1f); break;
-                    case "RightLeg": target = _rightleg; SetAlpha(_rightlegdamages,1f); break;
-                    case "LeftLeg": target = _leftleg; SetAlpha(_leftlegdamages,1f); break;
+                    case BodyPartType.Head: target = _head; SetAlpha(_headdamages,1f); break;
+                    case BodyPartType.RightHand: target = _righthand; SetAlpha(_righthanddamages,1f); break;
+                    case BodyPartType.LeftHand: target = _lefthand; SetAlpha(_lefthanddamages,1f); break;
+                    case BodyPartType.RightLeg: target = _rightleg; SetAlpha(_rightlegdamages,1f); break;
+                    case BodyPartType.LeftLeg: target = _leftleg; SetAlpha(_leftlegdamages,1f); break;
                 }
 
                 //カメラの拡大、移動
@@ -60,7 +71,11 @@ public class PartsPick : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && _expansion)//右クリック時
         {
             ResetCamera();
+            _gauze.gameObject.SetActive(false);
+            _bandage.gameObject.SetActive(false);
+            _display = false;
         }
+        _button.gameObject.SetActive(_expansion);
     }
     /// <summary>
     /// カメラ位置、大きさを元に戻す
@@ -97,5 +112,23 @@ public class PartsPick : MonoBehaviour
             c.a = alpha;
             sr.color = c;
         }     
+    }
+    /// <summary>
+    /// 治療法の表示
+    /// </summary>
+    private void SelectTreatment()
+    {
+        if (!_display)
+        {
+            _gauze.gameObject.SetActive(true);
+            _bandage.gameObject.SetActive(true);
+            _display = true;
+        }
+        else
+        {
+            _gauze.gameObject.SetActive(false);
+            _bandage.gameObject.SetActive(false);
+            _display = false;
+        }
     }
 }
