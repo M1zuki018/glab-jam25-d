@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PrologueTextAnimationExecuter : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class PrologueTextAnimationExecuter : MonoBehaviour
     [SerializeField] private GameObject prologueUI;
     [SerializeField] private GameObject skipButton;
     [SerializeField] private float duration = 0.5f;
+    [SerializeField] private float waitBeforeFade = 1f;
+    [SerializeField] private GameObject injuryManager;
+    [SerializeField] private float soundPauseDuration = 1f;
+
 
     private bool isFading = false;
 
@@ -39,7 +44,10 @@ public class PrologueTextAnimationExecuter : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isFading)
+        {
             ClosePrologueUI();
+            SoundManager.Instance.StopPrologueSFX();
+        }
 
     }
 
@@ -50,20 +58,35 @@ public class PrologueTextAnimationExecuter : MonoBehaviour
 
     private IEnumerator RunPrologue()
     {
-        for(int i = 0; i < prologueMessage.Length; i++)
+        SoundManager.Instance.musicSource.Stop();
+        SoundManager.Instance.prologueSfxHasPlayed = false;
+        SoundManager.Instance.PlayPrologueSFX();
+
+        for (int i = 0; i < prologueMessage.Length; i++)
         {
             yield return StartCoroutine(FadeInText(prologueMessage[i]));
 
-            yield return new WaitForSeconds(paragraphPause);
+            if (i < prologueMessage.Length - 1)
+            {
+                SoundManager.Instance.StopPrologueSFX();
+                yield return new WaitForSeconds(soundPauseDuration);
+                SoundManager.Instance.PlayPrologueSFX();
+
+                float remainingPause = paragraphPause - soundPauseDuration;
+                if (remainingPause > 0)
+                    yield return new WaitForSeconds(remainingPause);
+            }
         }
 
-        yield return new WaitForSeconds(1.5f);
-        StartCoroutine(FadeOutUI(2f));
+        SoundManager.Instance.StopPrologueSFX();
+        yield return new WaitForSeconds(waitBeforeFade);
+        StartCoroutine(FadeOutUI(duration));
     }
 
     private IEnumerator FadeInText(string paragraph)
     {
-        foreach(char c in paragraph)
+
+        foreach (char c in paragraph)
         {
             if (isFading) yield break;
 
@@ -92,6 +115,6 @@ public class PrologueTextAnimationExecuter : MonoBehaviour
 
         prologueText.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
         prologueUI.SetActive(false);
+        injuryManager.SetActive(true);
     }
-
 }

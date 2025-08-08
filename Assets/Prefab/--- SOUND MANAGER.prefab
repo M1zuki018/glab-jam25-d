@@ -180,7 +180,9 @@ MonoBehaviour:
   gameBgm: {fileID: 8300000, guid: e8b63d72d6a74054c84c2f13ca5a2058, type: 3}
   startButtonSfx: {fileID: 8300000, guid: 6909d630dbc3f7545ba5bf63a46b433d, type: 3}
   buttonSfx: {fileID: 8300000, guid: 004415f5e15085d47bd622d551ec68f2, type: 3}
+  prologueSfx: {fileID: 8300000, guid: 12f830816a6972f4cb9870fa74a71ee3, type: 3}
   startButtonSfxHasPlayed: 0
+  prologueSfxHasPlayed: 0
   sfxVolume: 0.3
   musicVolume: 0.018
 --- !u!1 &6854019459330102849

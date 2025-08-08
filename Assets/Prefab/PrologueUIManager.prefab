@@ -174,7 +174,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5854190557979307394}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -204,7 +204,9 @@ MonoBehaviour:
   paragraphPause: 1
   prologueUI: {fileID: 5854190557979307394}
   skipButton: {fileID: 8304310534027422740}
-  duration: 2
+  duration: 2.5
+  waitBeforeFade: 1
+  injuryManager: {fileID: 0}
 --- !u!1 &7361862612342405346
 GameObject:
   m_ObjectHideFlags: 0

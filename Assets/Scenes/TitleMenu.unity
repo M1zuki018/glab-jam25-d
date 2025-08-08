@@ -422,7 +422,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 920019986130441991, guid: 948a3ff0d8479b14bbbf7514765f3437, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2556285176280850747, guid: 948a3ff0d8479b14bbbf7514765f3437, type: 3}
       propertyPath: m_text
@@ -470,7 +470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3522408766388151763, guid: 948a3ff0d8479b14bbbf7514765f3437, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3525754160949750996, guid: 948a3ff0d8479b14bbbf7514765f3437, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -622,7 +622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8703898104940900049, guid: 948a3ff0d8479b14bbbf7514765f3437, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8756751185462607092, guid: 948a3ff0d8479b14bbbf7514765f3437, type: 3}
       propertyPath: m_LocalPosition.x
