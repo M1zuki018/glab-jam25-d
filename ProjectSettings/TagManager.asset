@@ -4,12 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Patient
+  - SoundButton
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - AllowTreatmentLayer
+  - 
   - Water
   - UI
   - 
