@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ResultUI : MonoBehaviour
 {
     public Text rankText;
-    //public EndingManager endingManager;
+    public ResultManager endingManager;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class ResultUI : MonoBehaviour
         Debug.Log($"ƒ‰ƒ“ƒN”»’èŒ‹‰Ê: {rank}");
         rankText.text = $"ƒ‰ƒ“ƒN: {rank}";
 
-        //endingManager.showRating(rank);
+        endingManager.ShowRating(rank);
     }
 
     string GetRank(int score)
