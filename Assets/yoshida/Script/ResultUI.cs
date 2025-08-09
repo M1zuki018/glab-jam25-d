@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ResultUI12 : MonoBehaviour
 {
     public Text rankText;
-    public ResultManager endingManager;
+    public SubResultManager endingManager;
 
     void Start()
     {
