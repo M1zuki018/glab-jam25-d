@@ -51,11 +51,15 @@ public class InjuryManagerRandomSetting : MonoBehaviour
         }
 
         List<int> indices = new List<int> { 0, 1, 2, 3, 4 };
-
+        List<int> treatmentdices = new List<int> { 0,1 };
+        List<int> speeddices = new List<int> { 0,1 };
         ShuffleParts(indices);
+        ShuffleParts(treatmentdices);
+        ShuffleParts(speeddices);
 
         int injuredIndex1 = indices[0]; // Assign the first 2 parts to injured
-        int injuredIndex2 = indices[1];
+        int injuredIndex2 = treatmentdices[0];
+        int injuredIndex3 = speeddices[0];
 
         switch (injuredIndex1)
         {
@@ -75,8 +79,26 @@ public class InjuryManagerRandomSetting : MonoBehaviour
                 _partText.text = "ç∂ë´Ç";
             break;
         }
-        bodyParts[injuredIndex1].isInjured = true; // Make those parts injured
-        bodyParts[injuredIndex2].isInjured = true;
+        switch (injuredIndex2)
+        {
+            case 0:
+                _treatmentText.text = "Ç–ÇËÇ–ÇË";
+                break;
+            case 1:
+                _treatmentText.text = "ÉKÉìÉKÉì";
+                break;
+        }
+        switch (injuredIndex3)
+        {
+            case 0:
+            _speedText.text = "Ç‚Ç≥ÇµÇ≠";
+            break;
+            case 1:
+            _speedText.text = "Ç≥Ç≥Ç¡Ç∆";
+            break;
+        }
+        //bodyParts[injuredIndex1].isInjured = true; // Make those parts injured
+        //bodyParts[injuredIndex2].isInjured = true;
     }
 
     private void ShuffleParts<T>(List<T> shuffleList)
@@ -106,5 +128,10 @@ public class InjuryManagerRandomSetting : MonoBehaviour
         {
             Debug.Log("Not injured!");
         }
+    }
+
+    public void TextSetting()
+    {
+
     }
 }
