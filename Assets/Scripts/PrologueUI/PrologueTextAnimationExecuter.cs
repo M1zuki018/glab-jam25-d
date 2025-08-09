@@ -2,23 +2,38 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class PrologueTextAnimationExecuter : MonoBehaviour
 {
-    [Header("Prologue text details")]
+    [Header("Text Details")]
     private string[] prologueMessage;
-    [SerializeField] private TMP_Text prologueText;
     [SerializeField] private float textSpeed = 0.05f;
     [SerializeField] private float paragraphPause = 1f;
-    [SerializeField] private GameObject prologueUI;
-    [SerializeField] private GameObject skipButton;
     [SerializeField] private float duration = 0.5f;
-    [SerializeField] private float waitBeforeFade = 1f;
-    [SerializeField] private GameObject injuryManager;
-    [SerializeField] private float soundPauseDuration = 1f;
 
+    [Header("UI Elements")]
+    [SerializeField] private GameObject ReadyUI;
+    private GameObject prologueUI;
+    private GameObject skipButton;
+    private TMP_Text prologueText;
+
+    [Header("Effects Details")]
+    [SerializeField] private float waitBeforeFade = 1f;
+    [SerializeField] private float soundPauseDuration = 1f;
+    private GameObject injuryManager;
+
+    private Coroutine prologueCoroutine;
 
     private bool isFading = false;
+
+    private void Awake()
+    {
+        prologueUI = this.gameObject;
+        skipButton = GameObject.Find("SkipButton");
+        injuryManager = GameObject.Find("InjuryManager");
+        prologueText = GetComponentInChildren<TMP_Text>();
+    }
 
     void Start()
     {
@@ -38,17 +53,19 @@ public class PrologueTextAnimationExecuter : MonoBehaviour
             "Ç‡Ç§Ç∑ÇÆÅAñ≤Ç∂Ç·Ç»Ç≠Ç»ÇÈÅB"
         };
 
-        StartCoroutine(RunPrologue());
+        prologueCoroutine = StartCoroutine(RunPrologue());
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isFading)
         {
+            if (prologueCoroutine != null)
+                StopCoroutine(prologueCoroutine);
+
             ClosePrologueUI();
             SoundManager.Instance.StopPrologueSFX();
         }
-
     }
 
     private void ClosePrologueUI()
@@ -114,7 +131,8 @@ public class PrologueTextAnimationExecuter : MonoBehaviour
         }
 
         prologueText.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+        ReadyUI.SetActive(true);
         prologueUI.SetActive(false);
-        injuryManager.SetActive(true);
     }
+
 }
