@@ -4,7 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-public class ResultUI : MonoBehaviour
+public class ResultUI12 : MonoBehaviour
 {
     public Text rankText;
     public ResultManager endingManager;
