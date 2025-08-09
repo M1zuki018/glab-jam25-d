@@ -282,6 +282,82 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD:Assets/Shota/Scenes/20250808_1.unity
+--- !u!114 &795853746 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7452599631058820783, guid: d34fdb304e61b594d9178095348231a0, type: 3}
+  m_PrefabInstance: {fileID: 8894003782818333120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1691525464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1691525466}
+  - component: {fileID: 1691525465}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1691525465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691525464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2cb1789b4d0b5419aa11eb4fcae429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftKeywordTexts:
+  - {fileID: 8683679488101990422}
+  - {fileID: 2119009187577673806}
+  - {fileID: 5785463349265017392}
+  resultText: {fileID: 795853746}
+  rules:
+  - firstId: 0
+    secondId: 1
+    result: "\u982D\u90E8\u304C\u305A\u304D\u305A\u304D"
+  - firstId: 0
+    secondId: 0
+    result: 
+  - firstId: 0
+    secondId: 0
+    result: 
+--- !u!4 &1691525466
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691525464}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.17021713, y: -0.13411033, z: -2.2571013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2119009187577673806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5413127445547945173, guid: d34fdb304e61b594d9178095348231a0, type: 3}
+  m_PrefabInstance: {fileID: 8894003782818333120}
+=======
 --- !u!1001 &897210169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -343,14 +419,44 @@ PrefabInstance:
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 151410208391233879, guid: f6af2355c753053429d606475d287c29, type: 3}
   m_PrefabInstance: {fileID: 897210169}
+>>>>>>> 240bedd1a508a52fc1397dc6c1ce60f874411cd1:Assets/Shota/Scenes/Karte.unity
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD:Assets/Shota/Scenes/20250808_1.unity
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5785463349265017392 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8913795622721410523, guid: d34fdb304e61b594d9178095348231a0, type: 3}
+  m_PrefabInstance: {fileID: 8894003782818333120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8683679488101990422 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 552817647218045913, guid: d34fdb304e61b594d9178095348231a0, type: 3}
+  m_PrefabInstance: {fileID: 8894003782818333120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &8894003782818333120
+=======
   m_Script: {fileID: 11500000, guid: b6d0a64dd2857ea4a87d7f714f9bcab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &4383343401273121537
+>>>>>>> 240bedd1a508a52fc1397dc6c1ce60f874411cd1:Assets/Shota/Scenes/Karte.unity
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -358,6 +464,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< HEAD:Assets/Shota/Scenes/20250808_1.unity
+    - target: {fileID: 2937408738001734754, guid: d34fdb304e61b594d9178095348231a0, type: 3}
+      propertyPath: flow
+      value: 
+      objectReference: {fileID: 1691525465}
+    - target: {fileID: 3469295995361584471, guid: d34fdb304e61b594d9178095348231a0, type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
+=======
     - target: {fileID: 49615611379560000, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
@@ -475,85 +592,100 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: 0da2b6b3791ab48499ee031b198e68da, type: 3}
     - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+>>>>>>> 240bedd1a508a52fc1397dc6c1ce60f874411cd1:Assets/Shota/Scenes/Karte.unity
       propertyPath: m_Pivot.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8019534572888487183, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+    - target: {fileID: 3856355963649736736, guid: d34fdb304e61b594d9178095348231a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD:Assets/Shota/Scenes/20250808_1.unity
+    - target: {fileID: 3972667558383720310, guid: d34fdb304e61b594d9178095348231a0, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 540836771}
+    - target: {fileID: 5654397939627382780, guid: d34fdb304e61b594d9178095348231a0, type: 3}
+      propertyPath: flow
+      value: 
+      objectReference: {fileID: 1691525465}
+    - target: {fileID: 6913386360300372584, guid: d34fdb304e61b594d9178095348231a0, type: 3}
+      propertyPath: flow
+      value: 
+      objectReference: {fileID: 1691525465}
+=======
     - target: {fileID: 8541209843607718119, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
@@ -574,16 +706,22 @@ PrefabInstance:
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 12800000, guid: 0da2b6b3791ab48499ee031b198e68da, type: 3}
+>>>>>>> 240bedd1a508a52fc1397dc6c1ce60f874411cd1:Assets/Shota/Scenes/Karte.unity
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9dd683ff6e5c9444bbec484570429655, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: d34fdb304e61b594d9178095348231a0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 540836773}
   - {fileID: 752010752}
+<<<<<<< HEAD:Assets/Shota/Scenes/20250808_1.unity
+  - {fileID: 8894003782818333120}
+  - {fileID: 1691525466}
+=======
   - {fileID: 897210169}
   - {fileID: 4383343401273121537}
+>>>>>>> 240bedd1a508a52fc1397dc6c1ce60f874411cd1:Assets/Shota/Scenes/Karte.unity
