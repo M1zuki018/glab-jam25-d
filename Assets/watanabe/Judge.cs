@@ -6,70 +6,80 @@ using UnityEngine.UI;
 
 public class Judge : MonoBehaviour
 {
-    public Text correctText;
-    public Text wrongText;
+    [Header("判定する傷オブジェクト")]
+    public List<GameObject> wounds;  // Inspectorで傷オブジェクトを登録
+
+    [Header("判定に使うシップのタグ名")]
+    public string shipTag = "Ship";
+
+    [Header("正解判定に必要な重なり割合 (0~1)")]
+    [Range(0f, 1f)]
     public float correctThreshold = 0.5f;
 
-    private Collider2D woundCollider;
-    private bool scored = false; // 一度スコア加算したか
+    [Header("正解した傷1つあたりのスコア")]
+    public int scorePerCorrect = 1;
 
-    private void Awake()
+    private int totalScore;
+
+    /// <summary>
+    /// リザルトボタン押下時に一斉判定するメソッド
+    /// </summary>
+    public void EvaluateAll()
     {
-        woundCollider = GetComponent<Collider2D>();
-        if (woundCollider == null)
-            Debug.LogError($"JudgeにCollider2Dがありません！:{gameObject.name}");
-        correctText.gameObject.SetActive(false);
-        wrongText.gameObject.SetActive(false);
-    }
+        totalScore = 0;
 
-    public void OnShipPlaced(GameObject ship)
-    {
-        if (scored) return; // 既にスコア加算済みなら無視
-
-        Collider2D shipCollider = ship.GetComponent<Collider2D>();
-        if (shipCollider == null)
+        foreach (var wound in wounds)
         {
-            Debug.LogError($"渡されたshipにCollider2Dがありません！ : {ship.name}");
-            return;
+            Collider2D woundCol = wound.GetComponent<Collider2D>();
+            if (woundCol == null)
+            {
+                Debug.LogWarning($"傷にCollider2Dが付いていません: {wound.name}");
+                continue;
+            }
+
+            bool isCorrect = false;
+
+            // 重なっているColliderを取得
+            Collider2D[] overlapped = Physics2D.OverlapBoxAll(woundCol.bounds.center, woundCol.bounds.size, 0f);
+
+            foreach (var col in overlapped)
+            {
+                if (col.CompareTag(shipTag))
+                {
+                    float overlapArea = CalculateOverlapArea(woundCol, col);
+                    float woundArea = woundCol.bounds.size.x * woundCol.bounds.size.y;
+                    float colArea = col.bounds.size.x * col.bounds.size.y;
+
+                    // 傷がどのくらいおおわれているかで判定
+                    float ratio = overlapArea / woundArea;
+
+                    if (ratio >= correctThreshold)
+                    {
+                        isCorrect = true;
+                        Debug.Log($"正解！ {wound.name} はシップ {col.gameObject.name} によってカバーされました (重なり割合: {ratio:F2})");
+                        break; // この傷は正解なので次の傷へ
+                    }
+                }
+            }
+
+            if (isCorrect)
+            {
+                totalScore += scorePerCorrect;
+            }
+            else
+            {
+                Debug.Log($"不正解: {wound.name} は十分にカバーされていません");
+            }
         }
 
-        float overlapArea = GetOverlapArea(shipCollider, woundCollider);
-        if (overlapArea <= 0)
-        {
-            ShowWrong();
-            return;
-        }
-
-        float shipArea = shipCollider.bounds.size.x * shipCollider.bounds.size.y;
-        float overlapRatio = overlapArea / shipArea;
-
-        if (overlapRatio >= correctThreshold)
-        {
-            ShowCorrect();
-            ScoreManager.Instance.AddScore(1);
-            scored = true;
-            Debug.Log($"傷口 {gameObject.name} に正しく貼れました。スコア加算！");
-        }
-        else
-        {
-            ShowWrong();
-            Debug.Log($"傷口 {gameObject.name} は不正解です。");
-        }
+        ScoreManager.Instance.AddScore(totalScore);
+        Debug.Log($"判定終了。スコア加算: {totalScore}");
     }
 
-    private void ShowCorrect()
-    {
-        correctText.gameObject.SetActive(true);
-        wrongText.gameObject.SetActive(false);
-    }
-
-    private void ShowWrong()
-    {
-        correctText.gameObject.SetActive(false);
-        wrongText.gameObject.SetActive(true);
-    }
-
-    private float GetOverlapArea(Collider2D a, Collider2D b)
+    
+    /// ２つのCollider2Dの重なり面積を簡易計算
+   
+    private float CalculateOverlapArea(Collider2D a, Collider2D b)
     {
         Bounds aBounds = a.bounds;
         Bounds bBounds = b.bounds;
@@ -82,7 +92,9 @@ public class Judge : MonoBehaviour
         float width = xMax - xMin;
         float height = yMax - yMin;
 
-        if (width <= 0 || height <= 0) return 0f;
+        if (width <= 0 || height <= 0)
+            return 0f;
+
         return width * height;
     }
 }
