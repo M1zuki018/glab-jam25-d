@@ -1,19 +1,39 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class PrologueTextAnimationExecuter : MonoBehaviour
 {
-    [Header("Prologue text details")]
+    [Header("Text Details")]
     private string[] prologueMessage;
-    [SerializeField] private TMP_Text prologueText;
     [SerializeField] private float textSpeed = 0.05f;
     [SerializeField] private float paragraphPause = 1f;
-    [SerializeField] private GameObject prologueUI;
-    [SerializeField] private GameObject skipButton;
     [SerializeField] private float duration = 0.5f;
 
+    [Header("UI Elements")]
+    [SerializeField] private GameObject ReadyUI;
+    private GameObject prologueUI;
+    private GameObject skipButton;
+    private TMP_Text prologueText;
+
+    [Header("Effects Details")]
+    [SerializeField] private float waitBeforeFade = 1f;
+    [SerializeField] private float soundPauseDuration = 1f;
+    private GameObject injuryManager;
+
+    private Coroutine prologueCoroutine;
+
     private bool isFading = false;
+
+    private void Awake()
+    {
+        prologueUI = this.gameObject;
+        skipButton = GameObject.Find("SkipButton");
+        injuryManager = GameObject.Find("InjuryManager");
+        prologueText = GetComponentInChildren<TMP_Text>();
+    }
 
     void Start()
     {
@@ -33,14 +53,19 @@ public class PrologueTextAnimationExecuter : MonoBehaviour
             "Ç‡Ç§Ç∑ÇÆÅAñ≤Ç∂Ç·Ç»Ç≠Ç»ÇÈÅB"
         };
 
-        StartCoroutine(RunPrologue());
+        prologueCoroutine = StartCoroutine(RunPrologue());
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isFading)
-            ClosePrologueUI();
+        {
+            if (prologueCoroutine != null)
+                StopCoroutine(prologueCoroutine);
 
+            ClosePrologueUI();
+            SoundManager.Instance.StopPrologueSFX();
+        }
     }
 
     private void ClosePrologueUI()
@@ -50,20 +75,35 @@ public class PrologueTextAnimationExecuter : MonoBehaviour
 
     private IEnumerator RunPrologue()
     {
-        for(int i = 0; i < prologueMessage.Length; i++)
+        SoundManager.Instance.musicSource.Stop();
+        SoundManager.Instance.prologueSfxHasPlayed = false;
+        SoundManager.Instance.PlayPrologueSFX();
+
+        for (int i = 0; i < prologueMessage.Length; i++)
         {
             yield return StartCoroutine(FadeInText(prologueMessage[i]));
 
-            yield return new WaitForSeconds(paragraphPause);
+            if (i < prologueMessage.Length - 1)
+            {
+                SoundManager.Instance.StopPrologueSFX();
+                yield return new WaitForSeconds(soundPauseDuration);
+                SoundManager.Instance.PlayPrologueSFX();
+
+                float remainingPause = paragraphPause - soundPauseDuration;
+                if (remainingPause > 0)
+                    yield return new WaitForSeconds(remainingPause);
+            }
         }
 
-        yield return new WaitForSeconds(1.5f);
-        StartCoroutine(FadeOutUI(2f));
+        SoundManager.Instance.StopPrologueSFX();
+        yield return new WaitForSeconds(waitBeforeFade);
+        StartCoroutine(FadeOutUI(duration));
     }
 
     private IEnumerator FadeInText(string paragraph)
     {
-        foreach(char c in paragraph)
+
+        foreach (char c in paragraph)
         {
             if (isFading) yield break;
 
@@ -91,6 +131,7 @@ public class PrologueTextAnimationExecuter : MonoBehaviour
         }
 
         prologueText.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+        ReadyUI.SetActive(true);
         prologueUI.SetActive(false);
     }
 
