@@ -60,4 +60,8 @@ public class SceneChangeManager : MonoBehaviour
         SceneManager.LoadScene("InGame");
     }
 
+    public void GotoDiagnosis2()
+    {
+        SceneManager.LoadScene("Diagnosis_phase_2"); 
+    }
 }

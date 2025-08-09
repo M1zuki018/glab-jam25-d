@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Globalization;
+using Unity.VisualScripting;
 
 public class GameFlowManager : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class GameFlowManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && readyUI.activeSelf)
             {
-                StartGame();
+                GotoKarte();
             }
         }
         else
@@ -50,6 +51,11 @@ public class GameFlowManager : MonoBehaviour
         injuryManager.SetActive(true);
         countdownCanvas?.SetActive(true);
         isReady = true;
+    }
+
+    private void GotoKarte()
+    {
+        SceneManager.LoadScene("Karte");
     }
 
     private void HandleTimer()
