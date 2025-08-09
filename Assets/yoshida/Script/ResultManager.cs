@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ResultManager : MonoBehaviour
+public class SubResultManager : MonoBehaviour
 {
     public GameObject TextA;
     public GameObject TextB;
@@ -22,6 +22,7 @@ public class ResultManager : MonoBehaviour
         ScoreC.SetActive(false);
         ScoreD.SetActive(false);
     }
+
     public void ShowRating(string rank)
     {
         switch (rank)
@@ -41,9 +42,6 @@ public class ResultManager : MonoBehaviour
             case "D":
                 TextD.SetActive(true);
                 ScoreD.SetActive(true);
-                break;
-            default:
-                Debug.LogWarning("–¢’m‚Ì•]‰¿‚ªŽw’è‚³‚ê‚Ü‚µ‚½: " + rank);
                 break;
         }
     }

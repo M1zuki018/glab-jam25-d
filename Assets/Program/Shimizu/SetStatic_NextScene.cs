@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 public class SetStatic_NextScene : MonoBehaviour
 {
 
-    [SerializeField] int setIndex;
+    [SerializeField] string _sceneName;
     //ロードするシーンにわかりやすく番号をつける
     void Start()
     {
-        StaticMember.Index = setIndex;
+        //StaticMember.Index = setIndex;
         //設定された値をStaticMemberに保存
     }
     public void LoadScene()
     {
-        SceneManager.LoadScene("何か入れる");
+        SceneManager.LoadScene(_sceneName);
         //ロードしたいスクリーンを入れる
     }
 }
