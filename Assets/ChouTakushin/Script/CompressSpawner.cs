@@ -11,14 +11,14 @@ public class CompressSpawner : MonoBehaviour
     [SerializeField] private GameObject _bandage;
     [SerializeField, Tooltip("患者の湿布を格納する子オブジェクト")] private GameObject _patientCompresses;
     [SerializeField, TooltipAttribute("ガーゼが貼られる前の拡大率")] private float _pastingScaleRate = 1.2f;
-    [SerializeField, TooltipAttribute("操作可能エリア")] Collider2D _treatmentCollider;
+    [SerializeField, TooltipAttribute("操作可能エリア")] RectTransform _treatmentArea;
 
     public EnumCompressType SelectedCompress = EnumCompressType.None;
     public bool CanSpawn = false;
 
-    private GameObject _pastingCompress = null;
-    private Vector2 _startPos;
-    private Vector2 _endPos;
+    private GameObject _pastingCompress = null; // 貼り付け中の貼り薬オブジェクト
+    private Vector2 _startPos; // マウスドラッグ時の始点
+    private Vector2 _endPos; // マウスドラッグ時の終点
     private Camera _camera;
 
     void Start()
@@ -26,7 +26,6 @@ public class CompressSpawner : MonoBehaviour
         _camera = Camera.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
         // 施術不可（拡大状態でない）の場合、処理しない
@@ -44,6 +43,7 @@ public class CompressSpawner : MonoBehaviour
                 _startPos = _camera.ScreenToWorldPoint(Input.mousePosition);
                 _pastingCompress = Instantiate(_guaze, _startPos, Quaternion.identity);
                 _pastingCompress.transform.localScale = Vector3.one * _pastingScaleRate;
+                AudioManager.Instance.PlaySE("Sippu_Streching");
             }
             if (Input.GetMouseButton(0) && _pastingCompress != null)
             {
@@ -51,7 +51,7 @@ public class CompressSpawner : MonoBehaviour
                 _endPos = _camera.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 direction = _endPos - _startPos;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                _pastingCompress.GetComponent<SpriteRenderer>().size = new Vector2(0.5f, direction.magnitude / _pastingScaleRate);
+                _pastingCompress.GetComponent<SpriteRenderer>().size = new Vector2(1, direction.magnitude / _pastingScaleRate);
                 _pastingCompress.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
             }
             if (Input.GetMouseButtonUp(0) && _pastingCompress != null)
@@ -60,8 +60,7 @@ public class CompressSpawner : MonoBehaviour
                 _pastingCompress.transform.localScale = Vector3.one;
                 _endPos = _camera.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 direction = _endPos - _startPos;
-                _pastingCompress.GetComponent<SpriteRenderer>().size = new Vector2(0.5f, direction.magnitude);
-
+                _pastingCompress.GetComponent<SpriteRenderer>().size = new Vector2(1, direction.magnitude);
 
                 // パーティクルエフェクトの再生
                 ParticleSystem ps = _pastingCompress.GetComponent<ParticleSystem>();
@@ -74,7 +73,8 @@ public class CompressSpawner : MonoBehaviour
                 _pastingCompress.transform.SetParent(_patientCompresses.transform);
                 _pastingCompress = null;
 
-                // TODO 音を再生
+                // 音を再生
+                AudioManager.Instance.PlaySEInterrupt("Sippu_Paste");
             }
         }
         // 絆創膏が選択された場合の処理
@@ -89,7 +89,8 @@ public class CompressSpawner : MonoBehaviour
                 // 貼り薬を患者の子オブジェクトとして追加
                 _pastingCompress.transform.SetParent(_patientCompresses.transform);
                 _pastingCompress = null;
-                // TODO 音を再生
+                // 音を再生
+                AudioManager.Instance.PlaySEInterrupt("Sippu_Paste");
             }
         }
     }
@@ -100,8 +101,8 @@ public class CompressSpawner : MonoBehaviour
     /// <returns></returns>
     private bool MouseInTreatmentArea()
     {
-        LayerMask layer = LayerMask.GetMask("AllowTreatmentLayer");
-        Collider2D col = Physics2D.OverlapPoint(_camera.ScreenToWorldPoint(Input.mousePosition), layer);
-        return col != null;
+        bool rst = RectTransformUtility.RectangleContainsScreenPoint(_treatmentArea, Input.mousePosition);
+        //Debug.Log("Allow TreatmentArea : " + rst);
+        return rst;
     }
 }

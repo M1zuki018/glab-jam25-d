@@ -19,6 +19,9 @@ public class PartsPick : MonoBehaviour
     [Header("治療法表示ボタン"), SerializeField] private Button _button;
     [Header("ガーゼ"),SerializeField] private Image _gauze;
     [Header("絆創膏"), SerializeField] private Image _bandage;
+    [Header("やり直しボタン"), SerializeField] private Button _retryButton;
+    [Header("施術完了ボタン"), SerializeField] private Button _finishButton;
+    [Header("薬生成コンポーネント"), SerializeField] private CompressSpawner _compressSpawner;
     public bool _expansion;
     private bool _display;
     Camera _camera;
@@ -45,7 +48,8 @@ public class PartsPick : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !_expansion)//左クリック時
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+            //RaycastHit2D[] hit = 
+            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, 0, LayerMask.GetMask("PatientParts"));
             if(hit.collider != null)
             {
                 BodyPart _part = hit.collider.GetComponent<BodyPart>();
@@ -66,6 +70,9 @@ public class PartsPick : MonoBehaviour
                     target.transform.position.y,
                     _camera.transform.position.z);
                 _expansion = true;
+
+                _retryButton.interactable = false;
+                _finishButton.interactable = false;
             }
         }
         if (Input.GetMouseButtonDown(1) && _expansion)//右クリック時
@@ -74,6 +81,10 @@ public class PartsPick : MonoBehaviour
             _gauze.gameObject.SetActive(false);
             _bandage.gameObject.SetActive(false);
             _display = false;
+
+            _compressSpawner.CanSpawn = false;
+            _retryButton.interactable = true;
+            _finishButton.interactable = true;
         }
         _button.gameObject.SetActive(_expansion);
     }
