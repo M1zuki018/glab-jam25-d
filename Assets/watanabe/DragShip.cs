@@ -29,7 +29,7 @@ public class DragShip : MonoBehaviour
         transform.position = mousePos + offset;
     }
 
-    void OnMouseUp()
+    /*void OnMouseUp()
     {
         isDragging = false;
 
@@ -39,5 +39,5 @@ public class DragShip : MonoBehaviour
         {
             judge.OnShipPlaced(gameObject);
         }
-    }
+    }*/
 }
