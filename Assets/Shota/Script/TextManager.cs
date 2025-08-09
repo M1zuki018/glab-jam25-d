@@ -3,45 +3,38 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
-public class TextManager : MonoBehaviour,
+public class TextKeyword : MonoBehaviour,
     IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [Header("色設定")]
+    [Header("見た目")]
     [SerializeField] Color normalColor = Color.white;
     [SerializeField] Color hoverColor = new Color(1f, 0.8f, 0.2f);
 
-    [Header("クリック時に左へ表示するテキスト")]
-    [SerializeField] Text leftText;
-    [SerializeField] string messageOnLeft = "左側に表示する内容";
+    [Header("このメインキーワードのID（0/1/2）")]
+    [SerializeField] int keywordId;
 
-    Text self;
+    [Header("1回目表示に使うラベル（未設定なら自分のTextを使用）")]
+    [SerializeField] string firstViewLabelOverride;
+
+    [Header("フロー管理参照")]
+    [SerializeField] KeywordFlowManager flow;
+
+    Text _self;
 
     void Awake()
     {
-        self = GetComponent<Text>();
-        self.color = normalColor;
-
-        if (leftText != null)
-        {
-            leftText.gameObject.SetActive(false);
-        }
+        _self = GetComponent<Text>();
+        _self.color = normalColor;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        self.color = hoverColor;
-    }
+    public void OnPointerEnter(PointerEventData _) => _self.color = hoverColor;
+    public void OnPointerExit(PointerEventData _) => _self.color = normalColor;
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData _)
     {
-        self.color = normalColor;
-    }
+        if (!flow) { Debug.LogWarning("[TextKeyword] flow未設定"); return; }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (leftText == null) return;
-
-        leftText.text = messageOnLeft;
-        leftText.gameObject.SetActive(true);
+        string label = string.IsNullOrEmpty(firstViewLabelOverride) ? _self.text : firstViewLabelOverride;
+        flow.OnKeywordClicked(keywordId, label);
     }
 }
