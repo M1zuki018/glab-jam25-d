@@ -865,7 +865,7 @@ MonoBehaviour:
   - {fileID: 62264880}
   shipTag: Ship
   correctThreshold: 0.5
-  scorePerCorrect: 1
+  scorePerCorrect: 2
 --- !u!4 &1272501030
 Transform:
   m_ObjectHideFlags: 0
@@ -1463,11 +1463,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2815128950198331846, guid: f20453d378802bc4eac1d2d47e9fa21c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.94
+      value: 1.88
       objectReference: {fileID: 0}
     - target: {fileID: 2815128950198331846, guid: f20453d378802bc4eac1d2d47e9fa21c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.83
+      value: -0.43
       objectReference: {fileID: 0}
     - target: {fileID: 2815128950198331846, guid: f20453d378802bc4eac1d2d47e9fa21c, type: 3}
       propertyPath: m_LocalPosition.z

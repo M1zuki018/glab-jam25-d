@@ -12,7 +12,8 @@ public class ShowHideSettings : MonoBehaviour
     [Header("References")]
     public CanvasGroup mainMenuGroup;
     public CanvasGroup settingsGroup;
-    public float fadeTime = 0.3f;
+    public CanvasGroup creditsGroup;
+    public float fadeTime = 1f;
 
     [Header("Volume")]
     public Slider bgmSlider;
@@ -29,6 +30,13 @@ public class ShowHideSettings : MonoBehaviour
             settingsGroup.alpha = 0;
             settingsGroup.interactable = false;
             settingsGroup.blocksRaycasts = false;
+        }
+
+        if(creditsGroup != null)
+        {
+            creditsGroup.alpha = 0;
+            creditsGroup.interactable = false;
+            creditsGroup.blocksRaycasts = false;
         }
     }
 
@@ -64,6 +72,30 @@ public class ShowHideSettings : MonoBehaviour
             mainMenuGroup.interactable = true;
 
         SyncSliderWithValue();
+    }
+
+    public void ShowCredits()
+    {
+        if (creditsGroup == null) return;
+
+        creditsGroup.alpha = 1;
+        creditsGroup.interactable = true;
+        creditsGroup.blocksRaycasts = true;
+
+        if (mainMenuGroup != null)
+            mainMenuGroup.interactable = false;
+    }
+
+    public void HideCredits()
+    {
+        if (creditsGroup == null) return;
+
+        creditsGroup.alpha = 0;
+        creditsGroup.interactable = false;
+        creditsGroup.blocksRaycasts = false;
+
+        if(mainMenuGroup != null)
+            mainMenuGroup.interactable = true;
     }
 
     // ----------------------------------------

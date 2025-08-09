@@ -16,10 +16,10 @@ public class SoundManager : MonoBehaviour
     public AudioClip gameBgm;
 
     [Header("Œø‰Ê‰¹")]
-    public AudioClip startButtonSfx;
+    public AudioClip readySfx;
     public AudioClip buttonSfx;
     public AudioClip prologueSfx;
-    public bool startButtonSfxHasPlayed = false;
+    public bool readySfxHasPlayed = false;
     public bool prologueSfxHasPlayed = false;
 
     [Header("‰¹—Êİ’è")]
@@ -111,12 +111,12 @@ public class SoundManager : MonoBehaviour
     }
 
     // “Á’è‚ÌŒø‰Ê‰¹‚ğÄ¶‚·‚é•Ö—˜ƒƒ\ƒbƒh
-    public void PlayStartSFX()
+    public void PlayReadySFX()
     {
-        if (startButtonSfxHasPlayed) return;
+        if (readySfxHasPlayed) return;
 
-        PlaySFX(startButtonSfx);
-        startButtonSfxHasPlayed = true;
+        PlaySFX(readySfx);
+        readySfxHasPlayed = true;
     }
 
     public void PlayPrologueSFX()
