@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SoundButton
   - Ship
+  - Patient
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - Ship
   - Water
   - UI
-  - 
-  - 
+  - AllowTreatmentLayer
+  - PatientParts
   - 
   - 
   - 

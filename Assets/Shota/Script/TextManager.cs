@@ -10,9 +10,19 @@ public class TextManager : MonoBehaviour,
     [SerializeField] Color normalColor = Color.white;
     [SerializeField] Color hoverColor = new Color(1f, 0.8f, 0.2f);
 
-    [Header("クリック時に左へ表示するテキスト")]
+    [Header("表示先（左側のText）")]
     [SerializeField] Text leftText;
-    [SerializeField] string messageOnLeft = "左側に表示する内容";
+
+    // 必要ならインスペクターから差し替えられるように
+    [Header("置換ワード設定")]
+    [SerializeField] string srcYasashiku = "やさしく";
+    [SerializeField] string repYasashiku = "ゆっくり";
+    [SerializeField] string srcSasatto = "ささっと";
+    [SerializeField] string repSasatto = "すばやく";
+    [SerializeField] string srcHirihiri = "ひりひり";
+    [SerializeField] string repHirihiri = "擦り傷";
+    [SerializeField] string srcGangan = "ガンガン";
+    [SerializeField] string repGangan = "打撲";
 
     Text self;
 
@@ -20,28 +30,28 @@ public class TextManager : MonoBehaviour,
     {
         self = GetComponent<Text>();
         self.color = normalColor;
-
-        if (leftText != null)
-        {
-            leftText.gameObject.SetActive(false);
-        }
+        if (leftText) leftText.gameObject.SetActive(false);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        self.color = hoverColor;
-    }
+    public void OnPointerEnter(PointerEventData _) => self.color = hoverColor;
+    public void OnPointerExit(PointerEventData _) => self.color = normalColor;
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData _)
     {
-        self.color = normalColor;
-    }
+        if (!leftText) return;
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (leftText == null) return;
+        var src = (self.text ?? "").Trim();
+        string message =
+            (src == srcYasashiku) ? repYasashiku :
+            (src == srcSasatto) ? repSasatto :
+            (src == srcHirihiri) ? repHirihiri :
+            (src == srcGangan) ? repGangan :
 
-        leftText.text = messageOnLeft;
+                                    src; // それ以外はそのまま
+
+        if (string.IsNullOrEmpty(message)) return;
+
+        leftText.text = message;
         leftText.gameObject.SetActive(true);
     }
 }

@@ -16,9 +16,11 @@ public class SoundManager : MonoBehaviour
     public AudioClip gameBgm;
 
     [Header("Œø‰Ê‰¹")]
-    public AudioClip startButtonSfx;
+    public AudioClip readySfx;
     public AudioClip buttonSfx;
-    public bool startButtonSfxHasPlayed = false;
+    public AudioClip prologueSfx;
+    public bool readySfxHasPlayed = false;
+    public bool prologueSfxHasPlayed = false;
 
     [Header("‰¹—ÊÝ’è")]
     [SerializeField, Range(0f, 1f)] private float sfxVolume = 0.3f;
@@ -109,12 +111,29 @@ public class SoundManager : MonoBehaviour
     }
 
     // “Á’è‚ÌŒø‰Ê‰¹‚ðÄ¶‚·‚é•Ö—˜ƒƒ\ƒbƒh
-    public void PlayStartSFX()
+    public void PlayReadySFX()
     {
-        if (startButtonSfxHasPlayed) return;
+        if (readySfxHasPlayed) return;
 
-        PlaySFX(startButtonSfx);
-        startButtonSfxHasPlayed = true;
+        PlaySFX(readySfx);
+        readySfxHasPlayed = true;
+    }
+
+    public void PlayPrologueSFX()
+    {
+        sfxSource.Stop();
+        sfxSource.clip = prologueSfx;
+        sfxSource.volume = sfxVolume;
+        sfxSource.loop = true;
+        sfxSource.Play();
+
+        prologueSfxHasPlayed = true;
+    }
+
+    public void StopPrologueSFX()
+    {
+        if (sfxSource.clip == prologueSfx && sfxSource.isPlaying)
+            sfxSource.Stop();
     }
 
     public void PlayButtonSFX() => PlaySFX(buttonSfx);
