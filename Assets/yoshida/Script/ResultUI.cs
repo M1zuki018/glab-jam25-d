@@ -14,12 +14,12 @@ public class ResultUI12 : MonoBehaviour
     void Start()
     {
 
-        readyCheckHelper = FindObjectOfType<ReadyCheckHelper>();
-        if (readyCheckHelper == null)
-        {
-            Debug.LogError("ReadyCheckHelperが見つかりません！");
-            return;
-        }
+        //readyCheckHelper = FindObjectOfType<ReadyCheckHelper>();
+        //if (readyCheckHelper == null)
+        //{
+        //    Debug.LogError("ReadyCheckHelperが見つかりません！");
+        //    return;
+        //}
 
         if (rankText == null)
         {
@@ -27,11 +27,12 @@ public class ResultUI12 : MonoBehaviour
             return;
         }
         int baseScore = ScoreManager.Instance.Score;
-       
-        
-        float clearTime = readyCheckHelper.CurrentTime;
+
+
+        //float clearTime = readyCheckHelper.CurrentTime;
+        float clearTime = 10f;
         int timeScore = ConvertTimeToScore(clearTime);
-        int score = baseScore + timeScore;
+        int score = baseScore * timeScore;
         Debug.Log($"現在のスコア: {baseScore}, タイム: {clearTime:F2}秒, タイムスコア: {timeScore}, 合計: {score}");
         
         string rank = GetRank(score);
@@ -45,18 +46,14 @@ public class ResultUI12 : MonoBehaviour
     {
         if(time <= 20f)
         {
-            return 3;
+            return 2;
         }
 
         if(time <= 40f)
         {
-            return 2;
-        }
-
-        if (time <= 60f)
-        {
             return 1;
         }
+
 
         else
         {
@@ -68,7 +65,7 @@ public class ResultUI12 : MonoBehaviour
     {
         switch (score)
         {
-            case 3:
+            case 4:
                 return "A";
             case 2:
                 return "B";

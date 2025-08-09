@@ -175,7 +175,6 @@ GameObject:
   - component: {fileID: 445427247}
   - component: {fileID: 445427246}
   - component: {fileID: 445427245}
-  - component: {fileID: 445427248}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -257,24 +256,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &445427248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445427244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0847d4c3bb91f7240be41755d3a1aa05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readyUI: {fileID: 1945380000}
-  injuryManager: {fileID: 297865075543221234}
-  countdownCanvas: {fileID: 1905224943}
-  timerVisual: {fileID: 84095105}
-  timerText: {fileID: 940545689}
-  timeLimit: 60
 --- !u!114 &940545689 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2222038758125864524, guid: 830dc1ace5d000c47bb1838421db79b8, type: 3}
@@ -359,6 +340,56 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4956826566248606231, guid: 830dc1ace5d000c47bb1838421db79b8, type: 3}
   m_PrefabInstance: {fileID: 3729178838813126172}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1926071381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1926071383}
+  - component: {fileID: 1926071382}
+  m_Layer: 0
+  m_Name: Helper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1926071382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926071381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0847d4c3bb91f7240be41755d3a1aa05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  readyUI: {fileID: 1945380000}
+  injuryManager: {fileID: 297865075543221234}
+  countdownCanvas: {fileID: 1905224943}
+  timerVisual: {fileID: 84095105}
+  timerText: {fileID: 940545689}
+  timeLimit: 60
+--- !u!4 &1926071383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926071381}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 401.27454, y: 240.70746, z: 0.022757351}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1945380000 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4606460461379625598, guid: 9ab5ff463d2c9c64fb324ee4e2ea6dab, type: 3}
@@ -740,3 +771,4 @@ SceneRoots:
   - {fileID: 297865075543221233}
   - {fileID: 5904382748861695827}
   - {fileID: 3729178838813126172}
+  - {fileID: 1926071383}

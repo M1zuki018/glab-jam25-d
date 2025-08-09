@@ -3,38 +3,55 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
-public class TextKeyword : MonoBehaviour,
+public class TextManager : MonoBehaviour,
     IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [Header("見た目")]
+    [Header("色設定")]
     [SerializeField] Color normalColor = Color.white;
     [SerializeField] Color hoverColor = new Color(1f, 0.8f, 0.2f);
 
-    [Header("このメインキーワードのID（0/1/2）")]
-    [SerializeField] int keywordId;
+    [Header("表示先（左側のText）")]
+    [SerializeField] Text leftText;
 
-    [Header("1回目表示に使うラベル（未設定なら自分のTextを使用）")]
-    [SerializeField] string firstViewLabelOverride;
+    // 必要ならインスペクターから差し替えられるように
+    [Header("置換ワード設定")]
+    [SerializeField] string srcYasashiku = "やさしく";
+    [SerializeField] string repYasashiku = "ゆっくり";
+    [SerializeField] string srcSasatto = "ささっと";
+    [SerializeField] string repSasatto = "すばやく";
+    [SerializeField] string srcHirihiri = "ひりひり";
+    [SerializeField] string repHirihiri = "擦り傷";
+    [SerializeField] string srcGangan = "ガンガン";
+    [SerializeField] string repGangan = "打撲";
 
-    [Header("フロー管理参照")]
-    [SerializeField] KeywordFlowManager flow;
-
-    Text _self;
+    Text self;
 
     void Awake()
     {
-        _self = GetComponent<Text>();
-        _self.color = normalColor;
+        self = GetComponent<Text>();
+        self.color = normalColor;
+        if (leftText) leftText.gameObject.SetActive(false);
     }
 
-    public void OnPointerEnter(PointerEventData _) => _self.color = hoverColor;
-    public void OnPointerExit(PointerEventData _) => _self.color = normalColor;
+    public void OnPointerEnter(PointerEventData _) => self.color = hoverColor;
+    public void OnPointerExit(PointerEventData _) => self.color = normalColor;
 
     public void OnPointerClick(PointerEventData _)
     {
-        if (!flow) { Debug.LogWarning("[TextKeyword] flow未設定"); return; }
+        if (!leftText) return;
 
-        string label = string.IsNullOrEmpty(firstViewLabelOverride) ? _self.text : firstViewLabelOverride;
-        flow.OnKeywordClicked(keywordId, label);
+        var src = (self.text ?? "").Trim();
+        string message =
+            (src == srcYasashiku) ? repYasashiku :
+            (src == srcSasatto) ? repSasatto :
+            (src == srcHirihiri) ? repHirihiri :
+            (src == srcGangan) ? repGangan :
+
+                                    src; // それ以外はそのまま
+
+        if (string.IsNullOrEmpty(message)) return;
+
+        leftText.text = message;
+        leftText.gameObject.SetActive(true);
     }
 }

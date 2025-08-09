@@ -865,7 +865,7 @@ MonoBehaviour:
   - {fileID: 62264880}
   shipTag: Ship
   correctThreshold: 0.5
-  scorePerCorrect: 1
+  scorePerCorrect: 2
 --- !u!4 &1272501030
 Transform:
   m_ObjectHideFlags: 0
