@@ -20,6 +20,8 @@ public class ReadyCheckHelper : MonoBehaviour
     private bool isReady = false;
     private float currentTime;
 
+    public float CurrentTime => currentTime;
+
     private void Start()
     {
         currentTime = timeLimit;
