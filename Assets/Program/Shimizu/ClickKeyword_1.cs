@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class ClickKeyword_1 : MonoBehaviour
 {
-        [SerializeField]
-        private TextMeshProUGUI descriptionText;
-        private void Start()
+    [SerializeField]
+    private TextMeshProUGUI descriptionText;
+    int count = 0;
+
+    private void Start()
         {
 
         }
@@ -24,6 +26,12 @@ public class ClickKeyword_1 : MonoBehaviour
                     // 自分がクリックされたときだけ表示切替
                     bool isActive = descriptionText.gameObject.activeSelf;
                     SetTextVisible(false);
+                if (count >= 0)
+                {
+                    KeywordCount.Instance.AddCount(1);
+                    count++;
+
+                }
                 }
             }
         }
