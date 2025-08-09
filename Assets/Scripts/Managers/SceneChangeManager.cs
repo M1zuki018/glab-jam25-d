@@ -4,11 +4,22 @@ using System.Collections;
 
 public class SceneChangeManager : MonoBehaviour
 {
+    public static SceneChangeManager Instance { get; private set; }
+
     public GameObject soundManagerPrefab;
     private bool isLoading = false;
 
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
         if (SoundManager.Instance == null)
         {
             Instantiate(soundManagerPrefab);
