@@ -11,6 +11,17 @@ public class ResultManager : MonoBehaviour
     public GameObject ScoreC;
     public GameObject ScoreD;
 
+    void Start()
+    {
+        TextA.SetActive(false);
+        TextB.SetActive(false);
+        TextC.SetActive(false);
+        TextD.SetActive(false);
+        ScoreA.SetActive(false);
+        ScoreB.SetActive(false);
+        ScoreC.SetActive(false);
+        ScoreD.SetActive(false);
+    }
     public void ShowRating(string rank)
     {
         switch (rank)
