@@ -12,7 +12,28 @@ public class InjuryManagerRandomSetting : MonoBehaviour
     [Header("•”ˆÊ"), SerializeField] private Text _partText;
     [Header("Çó"),SerializeField] private Text _treatmentText;
     [Header("‘¬‚³"), SerializeField] private Text _speedText;
+    [Header("")]
+    [Header("“ª")]
+    [Header("‘Å–o"),SerializeField] private GameObject _headbruise;
+    [Header("C‚è"),SerializeField] private GameObject _headabrasion;
+    [Header("‰Eè")]
+    [Header("‘Å–o"),SerializeField] private GameObject _righthandbruise;
+    [Header("C‚è"), SerializeField] private GameObject _righthandabrasion;
+    [Header("¶è")]
+    [Header("‘Å–o"), SerializeField] private GameObject _lefthandbruise;
+    [Header("C‚è"), SerializeField] private GameObject _lefthandabrasion;
+    [Header("‰E‘«")]
+    [Header("‘Å–o"), SerializeField] private GameObject _rightlegbruise;
+    [Header("C‚è"), SerializeField] private GameObject _rightlegabrasion;
+    [Header("¶‘«")]
+    [Header("‘Å–o"), SerializeField] private GameObject _leftlegbruise;
+    [Header("C‚è"),SerializeField] private GameObject _leftlegabrasion;
     private List<BodyPart> bodyParts;
+    private bool Head;
+    private bool RightHand;
+    private bool LeftHand;
+    private bool RightLeg;
+    private bool LeftLeg;
 
     private class BodyPart
     {
@@ -65,27 +86,52 @@ public class InjuryManagerRandomSetting : MonoBehaviour
         {
             case 0:
                 _partText.text = "“ª•”‚ğ";
-            break;
+                bodyParts[injuredIndex1].isInjured = true;
+                _headbruise.gameObject.SetActive(true);
+                _headabrasion.gameObject.SetActive(true);
+                break;
             case 1:
                 _partText.text = "‰Eè‚ğ";
-            break;
+                bodyParts[injuredIndex1].isInjured = true;
+                _righthandbruise.gameObject.SetActive(true);
+                _righthandabrasion.gameObject.SetActive(true);
+                break;
             case 2:
                 _partText.text = "¶è‚ğ";
-            break;
+                bodyParts[injuredIndex1].isInjured = true;
+                _lefthandbruise.gameObject.SetActive(true);
+                _lefthandabrasion.gameObject.SetActive (true);
+                break;
             case 3:
                 _partText.text = "‰E‘«‚ğ";
-            break;
+                bodyParts[injuredIndex1].isInjured = true;
+                _rightlegbruise.gameObject.SetActive(true);
+                _rightlegabrasion.gameObject.SetActive(true);
+                break;
             case 4:
                 _partText.text = "¶‘«‚ğ";
-            break;
+                bodyParts[injuredIndex1].isInjured = true;
+                _leftlegbruise.gameObject.SetActive(true);
+                _leftlegabrasion.gameObject.SetActive(true);
+                break;
         }
         switch (injuredIndex2)
         {
             case 0:
                 _treatmentText.text = "‚Ğ‚è‚Ğ‚è";
+                _headbruise.gameObject.SetActive(false);
+                _righthandbruise.gameObject.SetActive(false);
+                _lefthandbruise.gameObject.SetActive(false);
+                _rightlegbruise.gameObject.SetActive(false);
+                _leftlegbruise.gameObject.SetActive(false);
                 break;
             case 1:
                 _treatmentText.text = "ƒKƒ“ƒKƒ“";
+                _headabrasion.gameObject.SetActive(false);
+                _righthandabrasion.gameObject.SetActive(false);
+                _lefthandabrasion.gameObject.SetActive(false);
+                _rightlegabrasion.gameObject.SetActive(false);
+                _leftlegabrasion.gameObject.SetActive(false);
                 break;
         }
         switch (injuredIndex3)
@@ -97,7 +143,6 @@ public class InjuryManagerRandomSetting : MonoBehaviour
             _speedText.text = "‚³‚³‚Á‚Æ";
             break;
         }
-        //bodyParts[injuredIndex1].isInjured = true; // Make those parts injured
         //bodyParts[injuredIndex2].isInjured = true;
     }
 
