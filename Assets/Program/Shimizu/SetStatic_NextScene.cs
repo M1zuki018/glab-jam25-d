@@ -5,15 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SetStatic_NextScene : MonoBehaviour
 {
+    [SerializeField] string sceneIfCountHigh; // シーン名（カウントが2以上）
+    [SerializeField] string sceneIfCountLow;  // シーン名（カウントが2未満）
 
-   [SerializeField] int setIndex;
-
-    //ロードするシーンにわかりやすく番号をつける
     void Start()
     {
-        StaticMember.Index = setIndex;
-        //設定された値をStaticMemberに保存
+        // 必要ならStaticMemberなどに値を保存
     }
+
     public void LoadScene()
     {
         if (KeywordCount.Instance == null)
@@ -27,17 +26,12 @@ public class SetStatic_NextScene : MonoBehaviour
         if (count >= 2)
         {
             Debug.Log("A" + count);
-
-            SceneManager.LoadScene("何か入れる");
-            //治療のスクリーンを入れる
+            SceneManager.LoadScene(sceneIfCountHigh);
         }
         else
         {
             Debug.Log("B" + count);
-
-            SceneManager.LoadScene("何か入れる");
-            //戻るスクリーンを入れる
+            SceneManager.LoadScene(sceneIfCountLow);
         }
-        
     }
 }
