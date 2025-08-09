@@ -1,0 +1,39 @@
+using UnityEngine;
+
+public class ResultManager : MonoBehaviour
+{
+    public GameObject TextA;
+    public GameObject TextB;
+    public GameObject TextC;
+    public GameObject TextD;
+    public GameObject ScoreA;
+    public GameObject ScoreB;
+    public GameObject ScoreC;
+    public GameObject ScoreD;
+
+    public void ShowRating(string rank)
+    {
+        switch (rank)
+        {
+            case "A":
+                TextA.SetActive(true);
+                ScoreA.SetActive(true);
+                break;
+            case "B":
+                TextB.SetActive(true);
+                ScoreB.SetActive(true);
+                break;
+            case "C":
+                TextC.SetActive(true);
+                ScoreC.SetActive(true);
+                break;
+            case "D":
+                TextD.SetActive(true);
+                ScoreD.SetActive(true);
+                break;
+            default:
+                Debug.LogWarning("–¢’m‚Ì•]‰¿‚ªŽw’è‚³‚ê‚Ü‚µ‚½: " + rank);
+                break;
+        }
+    }
+}

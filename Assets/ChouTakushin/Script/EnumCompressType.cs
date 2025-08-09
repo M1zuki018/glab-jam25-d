@@ -1,0 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// Ž¼•zŽí—Þ‚Ì—ñ‹“ƒNƒ‰ƒX
+/// </summary>
+public enum EnumCompressType
+{
+    None,
+    Guaze,
+    Bandage,
+    Others
+}
