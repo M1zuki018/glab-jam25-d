@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Globalization;
 using UnityEditor;
+using System.Collections;
 
 public class ReadyCheckHelper : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class ReadyCheckHelper : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && readyUI.activeSelf && !SoundManager.Instance.readySfxHasPlayed)
             {
                 SoundManager.Instance.PlayReadySFX();
+                StartCoroutine(WaitOneSecond());
                 StartGame();
             }
         }
@@ -74,5 +76,11 @@ public class ReadyCheckHelper : MonoBehaviour
     private void GameOver()
     {
         SceneManager.LoadScene("Result");
+    }
+
+    private IEnumerator WaitOneSecond()
+    {
+        yield return new WaitForSeconds(1f);
+        SoundManager.Instance.musicSource.Play();
     }
 }

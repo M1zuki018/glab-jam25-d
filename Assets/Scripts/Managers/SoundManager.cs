@@ -80,7 +80,10 @@ public class SoundManager : MonoBehaviour
                 PlayMusic(titleBgm);
                 break;
             case "InGame":
-                musicSource.Stop();
+            case "Diagnosis_phase_2":
+            case "Result":
+            case "watanabe":
+                PlayMusic(gameBgm);
                 break;
             default:
                 break;
