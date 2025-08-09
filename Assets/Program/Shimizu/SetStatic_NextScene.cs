@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class SetStatic_NextScene : MonoBehaviour
 {
 
-    [SerializeField] int setIndex;
+   [SerializeField] int setIndex;
+
     //ロードするシーンにわかりやすく番号をつける
     void Start()
     {
@@ -15,7 +16,28 @@ public class SetStatic_NextScene : MonoBehaviour
     }
     public void LoadScene()
     {
-        SceneManager.LoadScene("何か入れる");
-        //ロードしたいスクリーンを入れる
+        if (KeywordCount.Instance == null)
+        {
+            Debug.LogError("KeywordCountのInstanceが見つかりません");
+            return;
+        }
+
+        int count = KeywordCount.Instance.Getcount();
+
+        if (count >= 2)
+        {
+            Debug.Log("A" + count);
+
+            SceneManager.LoadScene("何か入れる");
+            //治療のスクリーンを入れる
+        }
+        else
+        {
+            Debug.Log("B" + count);
+
+            SceneManager.LoadScene("何か入れる");
+            //戻るスクリーンを入れる
+        }
+        
     }
 }
