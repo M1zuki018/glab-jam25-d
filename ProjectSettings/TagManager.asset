@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - SoundButton
+  - Ship
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ship
   - Water
   - UI
   - 

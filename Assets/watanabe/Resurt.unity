@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rankText: {fileID: 939554582}
+  endingManager: {fileID: 0}
 --- !u!4 &1265046805
 Transform:
   m_ObjectHideFlags: 0
