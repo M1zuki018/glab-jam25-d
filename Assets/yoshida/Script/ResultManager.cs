@@ -11,7 +11,7 @@ public class ResultManager : MonoBehaviour
     public GameObject ScoreC;
     public GameObject ScoreD;
 
- void Start()
+    void Start()
     {
         TextA.SetActive(false);
         TextB.SetActive(false);
