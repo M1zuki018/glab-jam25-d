@@ -312,6 +312,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 197048169771443549, guid: 8f3fcd4e2b2fc404aa7a49aa97d4c79e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -155.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 197048169771443549, guid: 8f3fcd4e2b2fc404aa7a49aa97d4c79e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -91.8
+      objectReference: {fileID: 0}
     - target: {fileID: 603993495966503095, guid: 8f3fcd4e2b2fc404aa7a49aa97d4c79e, type: 3}
       propertyPath: leftText
       value: 
@@ -324,6 +332,22 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 540836771}
+    - target: {fileID: 1216587371997156934, guid: 8f3fcd4e2b2fc404aa7a49aa97d4c79e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 14.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216587371997156934, guid: 8f3fcd4e2b2fc404aa7a49aa97d4c79e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 128.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2384969956848234346, guid: 8f3fcd4e2b2fc404aa7a49aa97d4c79e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -255.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2384969956848234346, guid: 8f3fcd4e2b2fc404aa7a49aa97d4c79e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 9.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2775478296940461594, guid: 8f3fcd4e2b2fc404aa7a49aa97d4c79e, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -347,6 +371,10 @@ PrefabInstance:
     - target: {fileID: 4855665074835385807, guid: 8f3fcd4e2b2fc404aa7a49aa97d4c79e, type: 3}
       propertyPath: messageOnLeft
       value: "\u982D\u90E8\u3092"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796880800451660288, guid: 8f3fcd4e2b2fc404aa7a49aa97d4c79e, type: 3}
+      propertyPath: m_Text
+      value: "\u60A3\u8005\uFF1A\u300C\u5148\u751F\uFF5E\u75DB\u3044\u3088\u3046\uFF5E\u300D\r\n\u75DB\u3005\u3057\u3044\u59FF\u3067\u4E00\u3064\u76EE\u5C0F\u50E7\u306E\u60A3\u8005\u3055\u3093\u304C\u5165\u5BA4\u3057\u3066\u304D\u305F\u3002\r\n\r\n\u60A3\u8005\uFF1A\u300C\u3055\u3063\u304D\u5C71\u306B\u904A\u3073\u306B\u884C\u3063\u305F\u3068\u304D\u306B\u3000\u3000\u3000\u602A\u6211\u3092\u3057\u3061\u3083\u3063\u3066...\u300D\r\n\u6240\u3005\u670D\u304C\u6C5A\u308C\u3066\u3044\u3066\u9177\u3044\u602A\u6211\u3092\u3057\u3066\u3044\u308B\u3088\u3046\u3060\r\n\r\n\u81EA\u5206\uFF1A\u300C\u9177\u3044\u602A\u6211\u3060\u306D\u3001\u3069\u3093\u306A\u611F\u3058\u3067\u75DB\u3080\u3093\u3060\u3044\uFF1F\u300D\r\n\r\n\u60A3\u8005\uFF1A\u300C\u3000\u3000\u3000\u3000\u75DB\u3080\u3093\u3067\u3059\u3088\u306D\uFF5E\uFF01\u300D\r\n\u3000\u3000\r\n\u81EA\u5206\uFF1A\u300C\u305D\u3063\u304B\u3001\u305D\u308C\u306F\u305A\u3044\u3076\u3093\u75DB\u305D\u3046\u3060\u306D\u2026\r\n\u4ECA\u304B\u3089\u85AC\u3092\u8CBC\u308B\u3051\u3069\u5FC3\u306E\u6E96\u5099\u306F\u3044\u3044\u304B\u3044\uFF1F\u300D\r\n\r\n\u60A3\u8005\uFF1A\u300C\u3067\u304D\u308B\u3060\u3051\u3000\u3000\u3000\u3000\u6CBB\u3057\u3066\u307B\u3057\u3044\u304B\u306A\u300D\r\n\r\n\u81EA\u5206\uFF1A\u300C\u3088\u3057\u308F\u304B\u3063\u305F\uFF01\u3058\u3083\u3042\u6CBB\u7642\u306B\u79FB\u308D\u3046\u304B\u3002\r\n\u3000\u3000\u3000\u5148\u751F\u306F\u30D7\u30ED\u3060\u304B\u3089\u4EFB\u305B\u306A\u3055\u3044\uFF01\u300D"
       objectReference: {fileID: 0}
     - target: {fileID: 6673827874569112185, guid: 8f3fcd4e2b2fc404aa7a49aa97d4c79e, type: 3}
       propertyPath: m_Pivot.x
