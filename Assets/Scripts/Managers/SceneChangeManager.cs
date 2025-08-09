@@ -7,7 +7,6 @@ public class SceneChangeManager : MonoBehaviour
     public static SceneChangeManager Instance { get; private set; }
 
     public GameObject soundManagerPrefab;
-    private bool isLoading = false;
 
     void Awake()
     {
@@ -28,36 +27,17 @@ public class SceneChangeManager : MonoBehaviour
 
     public void GoToGame()
     {
-        if (!isLoading)
-        {
-            isLoading = true;
-            StartCoroutine(WaitUntilSFXHasFinished());
-        }
+        SceneManager.LoadScene("InGame");
     }
 
     public void GoToTitle()
     {
         SceneManager.LoadScene("TitleMenu");
-        SoundManager.Instance.startButtonSfxHasPlayed = false;
     }
 
     public void ExitGame()
     {
         Application.Quit();
-    }
-
-    private IEnumerator WaitUntilSFXHasFinished()
-    {
-        if (!SoundManager.Instance.startButtonSfxHasPlayed)
-        {
-            SoundManager.Instance.musicSource.Stop();
-            SoundManager.Instance.PlayStartSFX();
-            SoundManager.Instance.startButtonSfxHasPlayed = true;
-        }
-
-        yield return new WaitForSeconds(0.01f);
-
-        SceneManager.LoadScene("InGame");
     }
 
     public void GotoDiagnosis2()

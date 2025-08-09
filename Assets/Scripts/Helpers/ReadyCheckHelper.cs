@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Globalization;
-using Unity.VisualScripting;
+using UnityEditor;
 
-public class GameFlowManager : MonoBehaviour
+public class ReadyCheckHelper : MonoBehaviour
 {
     [Header("UI Elements")]
     [SerializeField] private GameObject readyUI;
@@ -34,9 +34,10 @@ public class GameFlowManager : MonoBehaviour
     {
         if (!isReady)
         {
-            if (Input.GetMouseButtonDown(0) && readyUI.activeSelf)
+            if (Input.GetMouseButtonDown(0) && readyUI.activeSelf && !SoundManager.Instance.readySfxHasPlayed)
             {
-                GotoKarte();
+                SoundManager.Instance.PlayReadySFX();
+                StartGame();
             }
         }
         else
@@ -53,12 +54,7 @@ public class GameFlowManager : MonoBehaviour
         isReady = true;
     }
 
-    private void GotoKarte()
-    {
-        SceneManager.LoadScene("Karte");
-    }
-
-    private void HandleTimer()
+    private float HandleTimer()
     {
         currentTime -= Time.deltaTime;
         currentTime = Mathf.Max(currentTime, 0f);
@@ -69,6 +65,8 @@ public class GameFlowManager : MonoBehaviour
 
         if (currentTime <= 0f)
             GameOver();
+
+        return currentTime;
     }
 
     private void GameOver()
